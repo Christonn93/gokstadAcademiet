@@ -1,0 +1,101 @@
+Fornavn,Etternavn,Boktittel,Sjanger,Lånedato,Låneperiode,Forlenget,Tilbakelevert
+Anna,Hansen,Havets hemmeligheter,Fantasy,12/02/2024,14,3,Ja
+Lars,Pedersen,Mørke gater,Krim,23/02/2024,21,0,Ja
+Emma,Olsen,Vitenskap og mennesket,Sakprosa,02/03/2024,30,5,Nei
+Per,Andersen,Dragens arving,Fantasy,15/03/2024,14,0,Ja
+Kari,Nilsen,Koden i glass,Krim,28/04/2024,7,2,Ja
+Jens,Berg,Eventyr for gamle sjeler,Fiksjon,09/05/2024,14,0,Ja
+Mia,Dalsen,Historien vi glemte,Sakprosa,18/05/2024,28,7,Nei
+Nils,Holm,Skjelett i biblioteket,Krim,29/05/2024,14,0,Nei
+Ida,Fredriksen,Stjerneskudd og skygger,Fantasy,01/06/2024,14,0,Ja
+Eirik Nygaard,Etterklangen av et rop,Fiksjon,10/06/2024,21,3,Ja
+Sara,Kristiansen,Brennpunkt i natten,Krim,22/06/2024,14,0,Ja
+Ole,Vik,Lærdommens lys,Sakprosa,30/06/2024,28,1,Ja
+Lisa,Dale,Voktere av tiden,Fantasy,05/07/2024,14,4,Nei
+Henrik,Rødstad,Gåter fra gamle byer,Fiksjon,14/07/2024,7,0,Ja
+Ada,Molgaard,Kald krig i biblioteket,Krim,25/07/2024,14,0,Nei
+Magnus,Nygaard,Tidløse skisser,Fiksjon,02/08/2024,21,2,Ja
+Nora,Holm,Robotenes etikk,Sakprosa,13/08/2024,14,0,Ja
+Tor,Eriksen,Drømmenes landskap,Fantasy,24/08/2024,14,0,Nei
+Noor,Kristoffersen,Løgn og løftebrudd,Fiksjon,02/09/2024,7,1,Ja
+Ingrid,Vik,Prosessuell bevegelse,Sakprosa,13/09/2024,14,0,Ja
+Kristine,Solberg,To liv i en natt,Fiksjon,01/10/2024,14,0,Ja
+Daniel,Engen,Rød skygge over byn,Krim,12/10/2024,21,6,Ja
+Hanna,Eriksen,Veien tilbake,Fiksjon,23/10/2024,14,0,Nei
+Benedicte,Olsen,Orden i kaos,Sakprosa,02/11/2024,28,3,Ja
+Kristian,Hansen,Koden i glass,Krim,13/11/2024,14,0,Ja
+Anna,Petersen,Stjerneskudd og skygger,Fantasy,24/11/2024,14,0,Ja
+Lars,Holm,Skillene i glass,Fiksjon,04/12/2024,7,2,Nei
+Mia,Olsen,Havets hemmeligheter,Fantasy,14/12/2024,14,0,Ja
+Nils,Berg,Havets hemmeligheter,Fantasy,21/12/2024,14,0,Ja
+Ida,Nygaard,Gåter fra gamle byer,Fiksjon,31/12/2024,7,1,Ja
+Sophie,Pedersen,Kald krig i biblioteket,Krim,05/01/2025,14,0,Ja
+Ole,Hansen,Voktere av tiden,Fantasy,15/01/2025,21,2,Ja
+Emma,Kristiansen,Etterklangen av et rop,Fiksjon,25/01/2025,14,0,Nei
+Lars,Nygaard,Brennpunkt i natten,Krim,04/02/2025,7,0,Ja
+Kari,Holm,Stjerneskudd og skygger,Fantasy,14/02/2025,14,0,Ja
+Mia,Olsen,Måneskinn på isen,Fantasy,24/02/2025,28,3,Ja
+Per,Berg,Historien vi glemte,Sakprosa,06/03/2025,14,0,Ja
+Anna,Dalsen,Koden i glass,Krim,16/03/2025,14,1,Nei
+Nils,Holm,Robotenes etikk,Sakprosa,26/03/2025,14,0,Ja
+Ida,Kristiansen,To liv i en natt,Fiksjon,05/04/2025,7,0,Ja
+Eva,Paulsen,Havets hemmeligheter,Krim,15/04/2025,14,0,Ja
+Jens,Solberg,Frosne øyeblikk,Fiksjon,14/04/2025,14,0,Nei
+Sara,Engen,Måneskinn på isen,Fantasy,22/04/2025,21,1,Ja
+Tor,Vik,Prosessuell bevegelse,Sakprosa,02/05/2025,14,0,Ja
+Ingrid,Kristiansen,Gåter fra gamle byer,Fiksjon,12/05/2025,7,0,Ja
+Henrik,Nygaard,Lærdommens lys,Sakprosa,22/05/2025,28,0,Ja
+Ada,Berg,Stjerneskudd og skygger,Fantasy,02/06/2025,14,0,Ja
+Magnus,Andersen,Kald krig i biblioteket,Krim,12/06/2025,14,0,Nei
+Nora,Olsen,Etterklangen av et rop,Fiksjon,22/06/2025,14,0,Ja
+Lars,Kristiansen,Drømmenes landskap,Fantasy,02/07/2025,21,2,Ja
+Mia,Nilsen,Tidløse skisser,Fiksjon,12/07/2025,14,0,Ja
+Anna,Berg,Robotenes etikk,Sakprosa,22/07/2025,28,1,Ja
+Ole,Dalsen,Havets hemmeligheter,Fantasy,01/08/2025,14,0,Nei
+Eva,Holm,Koden i glass,Krim,11/08/2025,7,0,Ja
+Johan,Vik,Stjerneskudd og skygger,Fantasy,21/08/2025,14,0,Ja
+Sara,Olsen,Historien vi glemte,Sakprosa,01/09/2025,21,3,Ja
+Nina,Kristiansen,To liv i en natt,Fiksjon,11/09/2025,14,0,Nei
+Tomas,Berg,Mørke gater,Krim,21/09/2025,14,0,Ja
+Lena,Nygaard,Eventyr for gamle sjeler,Fiksjon,01/10/2025,7,0,Ja
+Karl,Olsen,Gåter fra gamle byer,Fiksjon,11/10/2025,14,0,Ja
+Finn,Hansen,Etterklangen av et rop,Fiksjon,21/10/2025,14,abc,Ja
+Mia,Holm,Kald krig i biblioteket,Krim,31/10/2025,14,2,Ja
+Ida,Pedersen,Lærdommens lys,Sakprosa,10/11/2025,28,0,Ja
+Lars,Olsen,Voktere av tiden,Fantasy,20/11/2025,14,0,Ja
+Eva,Nilsen,Skjelett i biblioteket,Krim,01/12/2025,7,0,Nei
+Ole,Kristiansen,Stjerneskudd og skygger,Fantasy,11/12/2025,14,0,Ja
+Anna,Berg,Havets hemmeligheter,Fantasy,21/12/2025,14,0,Ja
+Jens,Dalsen,Eventyr for gamle sjeler,Fiksjon,31/12/2025,21,5,Ja
+Sara,Holm,,Krim,10/01/2026,14,0,Ja
+Nils,Pedersen,Måneskinn på isen,Fantasy,20/01/2026,14,0,Ja
+Ada,Olsen,Drømmenes landskap,Fantasy,02/02/2026,7,0,Nei
+Kristine,Berg,Kald krig i biblioteket,Krim,12/02/2026,14,1,Ja
+Ole,Dalen,Gåter fra gamle byer,Fiksjon,22/02/2026,7,abc,Ja
+Karin,Nilsen,Havets hemmeligheter,Krim,04/03/2026,14,0,Nei
+Erik,Olsen,Stjerneskudd og skygger,Fantasy,14/03/2026,14,0,Ja
+Mia,Kristiansen,Brennpunkt i natten,Krim,24/03/2026,21,2,Ja
+Lars,Hansen,To liv i en natt,Fiksjon,03/04/2026,14,0,Ja
+Emma,Nygaard,Lærdommens lys,Sakprosa,13/04/2026,14,0,Ja
+Nils,Berg,Historien vi glemte,Sakprosa,23/04/2026,28,0,Nei
+Ingrid,Solberg,Voktere av tiden,Fantasy,03/05/2026,14,0,Ja
+Jan,Kristiansen,Koden i glass,Krim,13/05/2026,14,0,Ja
+Sara,Dalsen,Eventyr for gamle sjeler,Fiksjon,23/05/2026,7,0,Ja
+Henrik,Olsen,Stjerneskudd og skygger,Fantasy,02/06/2026,14,0,Ja
+Ada,Holm,Havets hemmeligheter,Fantasy,12/06/2026,14,0,Nei
+Noor,Vik,Mørke gater,Krim,22/06/2026,7,1,Ja
+Tor,Nygaard,Havets hemmeligheter,Fiksjon,02/07/2026,14,2,Ja
+Ingrid,Pedersen,Kald krig i biblioteket,Krim,12/07/2026,14,0,Ja
+Lars,Kristiansen,Stjerneskudd og skygger,Fantasy,22/07/2026,14,0,Ja
+Emma,Berg,Etterklangen av et rop,Fiksjon,01/08/2026,14,0,Nei
+Jonas,Olsen,Dragens arving,Fantasy,11/08/2026,21,4,Ja
+Hanna,Hansen,Voktere av tiden,Fantasy,21/08/2026,14,0,Ja
+Lars,Andersen,Historien vi glemte,Sakprosa,31/08/2026,28,0,Ja
+Anna,Kristiansen,Koden i glass,Krim,10/09/2026,7,0,Nei
+Nils,Olsen,Måneskinn på isen,Fantasy,20/09/2026,14,1,Ja
+Ida,Dalsen,Frosne øyeblikk,Fiksjon,30/09/2026,14,0,Ja
+Jan,Berg,Gåter fra gamle byer,Fiksjon,10/10/2026,7,0,Ja
+Sara,Holm,Stjerneskudd og skygger,Fantasy,20/10/2026,14,0,Ja
+Kristian,Nygaard,Etterklangen av et rop,Fiksjon,30/10/2026,21,0,Nei
+Eva,Olsen,Havets hemmeligheter,Krim,09/11/2026,14,abc,Ja
+Ole,Hansen,,Krim,19/11/2026,14,0,Ja
