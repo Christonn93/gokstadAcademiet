@@ -6,7 +6,7 @@ The **ga_bibliotek** database system is designed to support a small library's op
 ---
 
 ## 📋 Table of Contents
-- [Database Design](#database-design)
+- [Assignment brief](#Assignment brief)
 - [Installation](#installation)
 - [Folder Structure](#folder-structure)
 - [Usage](#usage)
@@ -19,9 +19,25 @@ The **ga_bibliotek** database system is designed to support a small library's op
 
 ---
 
-### 📊 Database Structure
+## Assignment brief
 
-[Read about the database structure here](./.docs/other/Notes.md)
+I wanted to deliver the assignment as a fully working program. To point teachers to code that have relation with assignment task, I have decided to list codefiles here for easy navigation
+
+### Task 1 - Opprettelse av Databasen og Tabellene
+
+1. [Database script](./sql/create_database.sql)
+2. [Database tables](./sql/create_database_tables.sql)
+3. [Database seeding](./sql/seed_database.sql)
+
+### Task 2 - Forståelse og forklaring av database design
+
+[Database Readme](./.docs/database/README.md)
+
+### Task 3 
+
+[Queries](./sql/queries.sql)
+
+### Task 4 - Python og MySQL Integration 
 
 ---
 
