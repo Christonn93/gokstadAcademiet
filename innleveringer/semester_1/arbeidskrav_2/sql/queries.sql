@@ -4,7 +4,7 @@ This file contains SQL queries for the library database.
 Queries include selects, inserts, updates, and aggregations for books, borrowers, and loans.
 All queries are organized for easy reference and use in Python scripts.
 
-I folowed the
+I folowed the same comment setup as I got suggested by AI previus
 */
 """
 

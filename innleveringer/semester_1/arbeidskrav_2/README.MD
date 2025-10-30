@@ -49,22 +49,53 @@ I wanted to deliver the assignment as a fully working program. To point teachers
 - MySQL Connector for Python
 
 ### Setup Steps
-1. **Clone the repository**
-   ```bash
+
+#### 1. Install Python 3.12
+
+**Windows & macOS**
+- Download Python 3.12 from the official Python website.
+- Run the installer (ensure "Add Python to PATH" is checked).
+- Check installation:
+
+```bash
+  python --version
+```
+
+#### 2. Clone and enter the repository
+
+```bash
    git clone <repository-url>
    cd innleveringer/semester_1/arbeidskrav_2
-   ```
+```
 
-2. **Install Python dependencies**
+#### 3. Create a virtual environment
+
+```bash
+    python -m venv .venv
+```
+
+#### 4. Activate the environment
+
+**Windows:**
+```bash
+    .venv\Scripts\activate
+```
+
+**macOS/Linux:**
+```bash
+    source .venv/bin/activate
+```
+
+#### 5. **Install Python dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure Environment Variables**
+#### 6. **Configure Environment Variables**
    - Copy `.env.example` to `.env`
    - Update the values in `.env` as needed
 
-4. **Start Database Services**
+#### 7. **Start Database Services**
    ```bash
    docker compose -f ./docker/compose.yml up -d
    ```
@@ -102,6 +133,8 @@ arbeidskrav_2/
 │
 ├── sql/
 │   ├── create_database.sql         ← Defines schema, tables, and constraints for the main database
+│   ├── create_database_tables.sql  ← Defines schema, tables, and constraints for the main database
+│   ├── seed_database.sql           ← Defines schema, tables, and constraints for the main database
 │   └── queries.sql                 ← Reusable SQL queries for debugging or manual database operations
 │
 ├── python/

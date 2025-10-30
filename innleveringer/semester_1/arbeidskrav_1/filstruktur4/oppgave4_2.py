@@ -3,11 +3,11 @@ import shutil
 import sys
 sys.path.append('filstruktur4')
 
-from filstruktur4.oppgave4_1 import create_random_files
+from oppgave4_1 import create_random_files
 
 def sort_files():
-    source_dir = os.path.join("filstruktur4", "Files")
-    target_dir = os.path.join("filstruktur4", "Files", "SortedFiles")
+    source_dir = os.path.join("Files")
+    target_dir = os.path.join("Files", "SortedFiles")
 
     if not os.path.exists(source_dir):
         print(f"Error: {source_dir} directory does not exist!")

@@ -1,14 +1,13 @@
-from innleveringer.semester_1.arbeidskrav_2.python.app.menu import prompt_for_return, prompt_for_loan_details, \
-    prompt_for_history
-from innleveringer.semester_1.arbeidskrav_2.python.services.book_service import get_all_books, search_books
-from innleveringer.semester_1.arbeidskrav_2.python.services.loan_service import register_loan, return_book, \
-    get_borrower_history
-from innleveringer.semester_1.arbeidskrav_2.python.utils.handlers.error_handler import handle_error
-from innleveringer.semester_1.arbeidskrav_2.python.utils.helpers.formatters import print_books_table, print_history
+from app.menu import prompt_for_return, prompt_for_loan_details, prompt_for_history
+from services.book_service import get_all_books, search_books
+from services.loan_service import register_loan, return_book, get_borrower_history
+from utils.handlers.error_handler import handle_error
+from utils.helpers.formatters import print_books_table, print_history
 
 
-def handle_user_choice(choice, db_conn):
+def handle_user_choice(choice, database):
     try:
+        db_conn = database.connection
         if choice == 1:
             books = get_all_books(db_conn)
             print_books_table(books)
