@@ -53,7 +53,7 @@ Records all book lending transactions.
 | Utlånsdato  | DATE        | NOT NULL                    | Loan date                   |
 | Levert      | TINYINT(1)  | CHECK (Levert IN (0,1))     | Return status (0=No, 1=Yes) |
 
-### 🔑 Primary Keys and Foreign Keys
+### Primary Keys and Foreign Keys
 
 #### Primary Keys:
 
@@ -68,7 +68,7 @@ Records all book lending transactions.
 - **utlån.LNr** → låner.LNr
 - **utlån.(ISBN, EksNr)** → eksemplar.(ISBN, EksNr)
 
-### 🛡️ Constraints and Data Integrity
+### Constraints and Data Integrity
 
 #### Key Constraints:
 
@@ -77,6 +77,12 @@ Records all book lending transactions.
 - **FOREIGN KEY**: Maintains referential integrity between related tables
 - **CHECK CONSTRAINT**: In 'utlån' table, ensures 'Levert' only contains 0 or 1
 - **AUTO_INCREMENT**: Automatically generates unique IDs for loans and borrowers
+
+### Business Rules:
+- Each book (bok) is uniquely identified by its ISBN
+- Each physical copy (exemplar) is uniquely identified by (ISBN + EksNr)
+- Loans (utlån) track which borrower (låner) borrowed which copy (eksemplar)
+- Return status is enforced with CHECK constraint (0=not returned, 1=returned)
 
 #### Relationship Diagram:
 

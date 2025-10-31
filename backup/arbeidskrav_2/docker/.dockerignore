@@ -1,0 +1,28 @@
+# Virtual environments
+venv/
+env/
+
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# Development-specific files
+../.idea/
+.mypy_cache/
+.pytest_cache/
+.DS_Store
+*.log
+
+# Version control system files
+.git/
+.gitignore
+
+# Environment variables and secrets
+.env
+.aws/
+.ssh/
+
+# Build artifacts or temporary files
+dist/
+build/
+*.egg-info/

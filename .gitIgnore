@@ -47,3 +47,4 @@ bokutlan.csv
 # Setup script
 setup.sh
 .codeExamples
+/backup/*
