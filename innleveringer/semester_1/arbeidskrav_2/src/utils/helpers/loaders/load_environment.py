@@ -1,6 +1,5 @@
 import os
 from dotenv import load_dotenv
-from src.utils.handlers.error_handler import handle_env_error
 
 def load_environment():
     """Load environment variables safely"""
@@ -20,5 +19,5 @@ def load_environment():
 
     # Handle and log environment configuration errors
     except EnvironmentError as e:
-        handle_env_error(e)
+        print(f"OBS!! An error have decided to present itself: {e}")
         exit(1)

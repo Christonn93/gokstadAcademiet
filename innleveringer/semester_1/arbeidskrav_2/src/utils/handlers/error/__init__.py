@@ -1,2 +1,1 @@
-import handle_db_error as db_error
-import handle_default_error as error
+from .handle_connection_error import handle_connection_error

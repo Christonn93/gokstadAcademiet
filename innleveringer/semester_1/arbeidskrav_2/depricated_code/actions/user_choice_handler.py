@@ -1,10 +1,8 @@
 from src.services.book_service import get_all_books, search_books
 from src.services.loan_service import register_loan, return_book, get_borrower_history
-from src.utils.helpers.formatters import print_books_table, print_history
-from interface.prompts.prompt_for_history import prompt_for_history
-from interface.prompts import prompt_for_loan_details
-from interface.prompts import prompt_for_return
-from utils.handlers.error.handle_default_error import handle_default_error
+from depricated_code.prompts.prompt_for_history import prompt_for_history
+from interface import prompt_for_loan_details
+from interface import prompt_for_return
 
 def handle_user_choice(choice, database):
     """Handle user menu selections and execute corresponding database actions"""
@@ -56,5 +54,5 @@ def handle_user_choice(choice, database):
 
     # Handle unexpected errors gracefully
     except Exception as e:
-        handle_default_error(e)
+        print(e)
         return True

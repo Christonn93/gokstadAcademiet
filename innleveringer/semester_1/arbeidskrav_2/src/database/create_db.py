@@ -1,10 +1,8 @@
 import os
 from mysql.connector import Error
 
-from src.database.connect_db import connect_db
 
-
-def create_db(files: list[str] = None):
+def create_db(files: list[str] = None, conn = None, cursor = None):
     """Create and initialize database using provided SQL files"""
 
     # Check if files were provided
@@ -12,7 +10,6 @@ def create_db(files: list[str] = None):
         print("No SQL files provided.\n")
         return
 
-    conn, cursor = connect_db()
     if conn is None or cursor is None:
         print("Failed to establish database connection. Cannot create database.\n")
         return

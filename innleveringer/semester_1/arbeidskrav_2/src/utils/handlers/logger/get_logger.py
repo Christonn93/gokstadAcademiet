@@ -4,10 +4,11 @@ def get_logger(name, level=logging.INFO):
     logg = logging.getLogger(name)
     logg.setLevel(level)
 
-    if not logger.handlers:
+    if not logg.handlers:
+
         # Create handlers
         c_handler = logging.StreamHandler()
-        f_handler = logging.FileHandler('file.log')
+        f_handler = logging.FileHandler('error.log')
         c_handler.setLevel(logging.WARNING)
         f_handler.setLevel(logging.ERROR)
 
@@ -21,7 +22,7 @@ def get_logger(name, level=logging.INFO):
         logg.addHandler(c_handler)
         logg.addHandler(f_handler)
 
-    return logger
+    return logg
 
 
 logger = get_logger(__name__)

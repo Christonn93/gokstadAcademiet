@@ -19,22 +19,22 @@ def connect_db():
         # Connect to MySQL server (not specific database)
         conn = connect(**config)
         cursor = conn.cursor()
-        print(f"✅ Connected to MySQL server")
+        print(f"Connected to MySQL server")
 
         # Check if database exists
         cursor.execute("SHOW DATABASES LIKE %s", (database_name,))
         database_exists = cursor.fetchone() is not None
 
         if database_exists:
-            print(f"✅ Database '{database_name}' exists")
+            print(f"Database '{database_name}' exists")
             # Close and reconnect WITH the database
             cursor.close()
             conn.close()
             conn = connect(**DB_CONFIG)
             cursor = conn.cursor()
-            print(f"✅ Now using database: {database_name}")
+            print(f"Now using database: {database_name}")
         else:
-            print(f"📝 Database '{database_name}' does not exist")
+            print(f"Database '{database_name}' does not exist")
             # Keep connection without database - it will be created later
 
         return conn, cursor

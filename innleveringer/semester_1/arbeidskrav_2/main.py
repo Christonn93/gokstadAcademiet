@@ -1,32 +1,16 @@
-from constants.sql_files import sql_files
-from database import test_connection, create_db, create_db_tables, seed_db
-from utils import wait_for_enter as user_action
+from interface.program import query_program
+from services.database_service import database_service
 
 def main_program():
-    """The main program"""
+    """The main program - orchestrates database setup and launches the application"""
+    # Running database service
+    database_service()
 
-    # Test connection first and exit if it fails
-    if not test_connection():
-        return
+    # Launch the main user interface for querying the database
+    query_program()
 
-    # Create database
-    if sql_files["create_db"]:
-        create_db([sql_files["create_db"]])
-        user_action()
-
-    # Create database tables
-    if sql_files["create_tables"]:
-        create_db_tables([sql_files["create_tables"]])
-        user_action()
-
-    # Seed data in to database tables
-    if sql_files["seed_db"]:
-        seed_db(sql_files["seed_db"])
-        user_action()
-    else:
-        print("❌ Cannot seed data - tables are missing")
-
-   # Start interface
-
+# Standard Python idiom to ensure code only runs when executed directly
 if __name__ == '__main__':
+
+    # Entry point when script is run directly
     main_program()

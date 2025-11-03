@@ -1,68 +1,69 @@
-import os
 from mysql.connector import Error
-from src.database.connect_db import connect_db
+
+from database import connect_db
+from database.disconnect_db import disconnect_db
+from utils.handlers.data.seed_data import seed_data
+from utils.handlers.parser.parse_sql_file import parse_sql_file
+from utils.helpers.validation.is_connected import is_connected
+from utils.helpers.validation.is_seed_valid import is_seed_valid
+from utils.helpers.validation.is_valid_seed_file import is_valid_seed_file
+
 
 def seed_db(file_path: str = None):
-    """Populate the database with data from a SQL seed file"""
+    """Main function to populate the database with data from a SQL seed file"""
 
-    # Using database connection
+    print("Starting database seeding function...")
+
+    # Validate input parameters
+    if not is_valid_seed_file(file_path):
+        return
+
+    # Establish database connection
     conn, cursor = connect_db()
 
-    # FIXED: Check if connection failed (conn or cursor is None)
-    if conn is None or cursor is None:
-        print("No database connection\n")
-        return  # No need to close since connect_db already returned None, None
-
-    # Check if file path was provided
-    if not file_path:
-        print("No SQL file provided for seeding.\n")
-        cursor.close()
-        conn.close()
+    if not is_connected(conn, cursor):
         return
 
-    print("\nStarting database seeding...\n")
-
-    # Validate file path
-    if not os.path.exists(file_path):
-        print(f"SQL file not found: {file_path}")
-        cursor.close()
-        conn.close()
-        return
+    print("SUCCESS: Database connection established")
+    print(f"SQL file path: {file_path}")
+    print("\nStarting database seeding process...\n")
 
     try:
-        # Read SQL file content
-        with open(file_path, "r", encoding="utf-8") as file:
-            sql_script = file.read()
+        # Parse SQL file into executable statements
+        statements = parse_sql_file(file_path)
 
-        # Split into individual SQL statements
-        statements = [
-            stmt.strip() for stmt in sql_script.split(";")
-            if stmt.strip() and not stmt.strip().startswith("--")
-        ]
+        if not statements:
+            print("WARNING: No executable SQL statements found in file")
+            return
 
-        # Execute each statement one by one
-        for statement in statements:
-            try:
-                cursor.execute(statement)
-                print(f"✓ Executed: {statement[:60]}...")
-            except Error as e:
-                print(f"✗ Skipping statement due to error:\n{statement[:80]}...\n→ {e}")
+        # Execute all SQL statements
+        successful_statements, failed_statements = seed_data(cursor, statements)
 
-        # Commit changes
+        # Commit changes to database
         conn.commit()
-        print("\nDatabase seeding completed successfully!\n")
+        print(f"\nDatabase seeding completed!")
+        print(f"Summary: {successful_statements} successful, {failed_statements} failed")
+
+        # Verify data was inserted (only if we had successful statements)
+        if successful_statements > 0:
+            print("Changes committed to database")
+            is_seed_valid(cursor)
+        else:
+            print("WARNING: No successful statements executed")
+
+    except FileNotFoundError as e:
+        print(f"ERROR: {e}")
 
     except Error as e:
         print(f"MySQL error during seeding: {e}")
         if conn:
             conn.rollback()
-
+            print("All changes rolled back due to error")
+    except Exception as e:
+        print(f"Unexpected error during seeding: {e}")
+        if conn:
+            conn.rollback()
+            print("All changes rolled back due to unexpected error")
     finally:
-        # Cleanup resources
-        if cursor is not None:
-            cursor.close()
-            print("Cursor closed.\n")
-
-        if conn is not None and conn.is_connected():
-            conn.close()
-            print("Connection closed.\n")
+        # Always clean up resources
+        disconnect_db(cursor, conn)

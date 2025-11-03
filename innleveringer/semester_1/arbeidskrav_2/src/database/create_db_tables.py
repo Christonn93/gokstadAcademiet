@@ -1,7 +1,7 @@
 import os
 from mysql.connector import Error
 
-from src.database.connect_db import connect_db
+from database.connect_db import connect_db
 
 
 def create_db_tables(files: list[str] = None):

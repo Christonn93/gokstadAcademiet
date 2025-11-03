@@ -87,9 +87,15 @@ I wanted to deliver the assignment as a fully working program. To point teachers
 ```
 
 #### 5. **Install Python dependencies**
-   ```bash
+
+```bash
+  python.exe -m pip install --upgrade pip
+```
+
+
+```bash
    pip install -r requirements.txt
-   ```
+```
 
 #### 6. **Configure Environment Variables**
    - Copy `.env.example` to `.env`
@@ -239,6 +245,7 @@ The Python modules in the `python/` directory provide functions to:
 - [MySQL Documentation](https://dev.mysql.com/doc/)
 - [Python MySQL Connector Documentation](https://dev.mysql.com/doc/connector-python/en/)
 - [Database Design Best Practices](https://www.guru99.com/database-design.html)
+- [Getting Started with MySQL Connector/Python](https://www.mysqltutorial.org/python-mysql/getting-started-mysql-python-connector/)
 
 ---
 
@@ -247,7 +254,6 @@ This project utilized AI assistance for:
 - Code structure optimization
 - Documentation template creation
 - SQL query validation
-- Python function development
 
 **AI Tools Used:**
 - ChatGPT
