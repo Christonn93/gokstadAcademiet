@@ -11,7 +11,7 @@ The database consists of four main tables that work together to manage library o
 Stores core information about books in the library collection.
 
 | Column Name | Data Type    | Constraints           | Description                        |
-| ----------- | ------------ | --------------------- | ---------------------------------- |
+|-------------|--------------|-----------------------|------------------------------------|
 | ISBN        | VARCHAR(13)  | PRIMARY KEY, NOT NULL | International Standard Book Number |
 | Tittel      | VARCHAR(255) | NOT NULL              | Book title                         |
 | Forfatter   | VARCHAR(100) | NOT NULL              | Author name                        |
@@ -24,7 +24,7 @@ Stores core information about books in the library collection.
 Tracks individual physical copies of each book.
 
 | Column Name                              | Data Type   | Constraints           | Description         |
-| ---------------------------------------- | ----------- | --------------------- | ------------------- |
+|------------------------------------------|-------------|-----------------------|---------------------|
 | ISBN                                     | VARCHAR(13) | FOREIGN KEY, NOT NULL | References bok.ISBN |
 | EksNr                                    | INT         | NOT NULL              | Copy number         |
 | **Composite Primary Key:** (ISBN, EksNr) |             |                       |                     |
@@ -34,7 +34,7 @@ Tracks individual physical copies of each book.
 Stores information about library members.
 
 | Column Name | Data Type    | Constraints                 | Description        |
-| ----------- | ------------ | --------------------------- | ------------------ |
+|-------------|--------------|-----------------------------|--------------------|
 | LNr         | INT          | PRIMARY KEY, AUTO_INCREMENT | Unique borrower ID |
 | Fornavn     | VARCHAR(50)  | NOT NULL                    | First name         |
 | Etternavn   | VARCHAR(50)  | NOT NULL                    | Last name          |
@@ -45,7 +45,7 @@ Stores information about library members.
 Records all book lending transactions.
 
 | Column Name | Data Type   | Constraints                 | Description                 |
-| ----------- | ----------- | --------------------------- | --------------------------- |
+|-------------|-------------|-----------------------------|-----------------------------|
 | UtlånsNr    | INT         | PRIMARY KEY, AUTO_INCREMENT | Unique loan ID              |
 | LNr         | INT         | FOREIGN KEY, NOT NULL       | References låner.LNr        |
 | ISBN        | VARCHAR(13) | FOREIGN KEY, NOT NULL       | References bok.ISBN         |
@@ -85,6 +85,10 @@ Records all book lending transactions.
 - Return status is enforced with CHECK constraint (0=not returned, 1=returned)
 
 #### Relationship Diagram:
+
+![img.png](img.png)
+
+[Drawsql.app](https://drawsql.app/teams/chrisdev-1/diagrams/ga-bibliotek)
 
 ```
 bok (1) ←→ (Many) eksemplar (1) ←→ (Many) utlån (Many) ←→ (1) låner

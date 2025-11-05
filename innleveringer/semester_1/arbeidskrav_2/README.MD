@@ -101,26 +101,34 @@ I wanted to deliver the assignment as a fully working program. To point teachers
    - Copy `.env.example` to `.env`
    - Update the values in `.env` as needed
 
+
 #### 7. **Start Database Services**
    ```bash
-   docker compose -f ./docker/compose.yml up -d
+    docker run -p 3306:3306 --name ga-mysql-2025 -v ga-vol-2025:/var/lib/mysql -d --restart unless-stopped yngvemag/ga-mysql-db
    ```
 
 ---
 
 ## 🏃 Run the project
 
-1. Start docker container
+1. Run Python scripts
+    ```bash
+        python ./python/main.py
+    ```
+
+> Can also run it with the included docker. Then the default docker needs to be closed
+
+Start docker container
     ```bash
         docker compose -f ./docker/compose.yml up -d
     ```
 > You can now navigate to [phpMyadmin](http://localhost:8080/index.php) in the browser, input the password and username to view a local version of your database
 
-2. Run Python scripts
-    ```bash
-        python ./python/main.py
-    ```
+NOTE: Not fully operative!!! 
+
 ---
+
+
 
 ## 📂 Folder Structure
 ```
@@ -211,11 +219,6 @@ arbeidskrav_2/
 
 
 ---
-
-## 🐛 Problems
-
-During this assignment and how I have structured my GitHub repo to collect and contain all school related work in one repository I have been struggling with paths
-All problems I have had during this Assignment is listed [here](./.docs/other/Problemer.md)
 
 ---
 

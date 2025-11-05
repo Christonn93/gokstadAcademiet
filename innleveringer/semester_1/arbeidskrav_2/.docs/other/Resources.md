@@ -12,6 +12,32 @@ This document provides a curated collection of resources to help you build robus
   - Connection management
   - Error handling in database operations
 
+
+### Connecting Python with SQL
+- **Resource**: [FreeCodeCamp - Connect Python with SQL](https://www.freecodecamp.org/news/connect-python-with-sql/)
+- **Purpose**: Learn step-by-step how to establish and manage connections between Python and SQL databases.
+- **Key Concepts**:
+  - Using `mysql.connector`
+  - Executing queries safely
+  - Handling transactions and exceptions
+
+### MySQL Connector Cursor Reference
+- **Resource**: [MySQL Docs - Cursor fetch methods](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html)
+- **Purpose**: Official documentation for MySQL Connector/Python’s cursor operations.
+- **Key Concepts**:
+  - Fetching query results
+  - Iterating over records
+  - Cursor methods (`fetchone()`, `fetchall()`)
+
+### Python Notes for Professionals
+- **Resource**: [PDF - Python Notes for Professionals](https://ia800902.us.archive.org/4/items/2018PythonNotesForProfessionals/2018_python-notes-for-professionals.pdf)
+- **Purpose**: Comprehensive, community-compiled Python reference covering syntax, modules, and advanced techniques.
+- **Key Concepts**:
+  - Core Python patterns
+  - Database connectivity examples
+  - Error handling and performance tips
+
+
 ## 💻 Terminal Programming
 
 ### Creating Terminal Programs with Python

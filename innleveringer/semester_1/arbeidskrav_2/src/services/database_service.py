@@ -1,17 +1,20 @@
 from constants import sql_files
 from database import connect_db, create_db, create_db_tables, seed_db
-from utils.helpers.validation.is_connected import is_connected
+from utils.helpers import Validation
 
 
 def database_service():
     # Get file paths for all SQL scripts needed for database setup
     sql_paths = sql_files()
 
+    # Calling validation class
+    validate = Validation()
+
     # Establish connection to the database
     conn, cursor = connect_db()
 
     # Verify database connection is working before proceeding
-    if is_connected(conn, cursor):
+    if validate.is_connected(conn, cursor):
         pass  # Connection is valid, continue with setup
 
     # Create the database if it doesn't exist

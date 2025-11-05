@@ -4,9 +4,7 @@ from database import connect_db
 from database.disconnect_db import disconnect_db
 from utils.handlers.data.seed_data import seed_data
 from utils.handlers.parser.parse_sql_file import parse_sql_file
-from utils.helpers.validation.is_connected import is_connected
-from utils.helpers.validation.is_seed_valid import is_seed_valid
-from utils.helpers.validation.is_valid_seed_file import is_valid_seed_file
+from utils.helpers import Validation
 
 
 def seed_db(file_path: str = None):
@@ -14,14 +12,17 @@ def seed_db(file_path: str = None):
 
     print("Starting database seeding function...")
 
+    # Calling validation
+    validate = Validation()
+
     # Validate input parameters
-    if not is_valid_seed_file(file_path):
+    if not validate.is_valid_seed_file(file_path):
         return
 
     # Establish database connection
     conn, cursor = connect_db()
 
-    if not is_connected(conn, cursor):
+    if not validate.is_connected(conn, cursor):
         return
 
     print("SUCCESS: Database connection established")
@@ -47,7 +48,7 @@ def seed_db(file_path: str = None):
         # Verify data was inserted (only if we had successful statements)
         if successful_statements > 0:
             print("Changes committed to database")
-            is_seed_valid(cursor)
+            validate.is_seed_valid(cursor)
         else:
             print("WARNING: No successful statements executed")
 

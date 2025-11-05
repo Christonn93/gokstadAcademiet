@@ -6,7 +6,7 @@ AI generated kode -> .docs/AI-Help/drop_database.md
 """
 
 def drop_db(db_name: str, conn=None, cursor=None):
-    """Remove (drop) the existing database and all its tables"""
+    """Remove the existing database and all its tables"""
 
     try:
         # Establish a connection to the MySQL server (not to a specific database)

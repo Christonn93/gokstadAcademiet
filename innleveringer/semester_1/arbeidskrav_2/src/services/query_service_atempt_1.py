@@ -1,5 +1,7 @@
 from database.query_db import query_db
 
+# My attempt on creating a class service. Did nto end up using this
+
 class QueryService:
     def __init__(self):
         """Initialize the QueryService - no connection needed as query_db handles it"""
