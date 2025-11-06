@@ -87,6 +87,10 @@ def query_program():
             results = loan_service.get_loaned_books_per_author()
             print("\n" + format_table(results))
 
+        elif choice == "13":
+            results = book_service.get_all_books()
+            print("\n" + format_table(results))
+
         elif choice == "0":
             print("\n👋 Exiting program. Goodbye!")
             break

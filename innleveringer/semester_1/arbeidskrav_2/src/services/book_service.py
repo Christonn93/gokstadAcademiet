@@ -73,3 +73,8 @@ class BookService:
             WHERE u.UtlånsNr IS NULL
         """
         return query_db(query, fetch=True)
+
+    @staticmethod
+    def get_all_books():
+        query = """SELECT * FROM bok"""
+        return query_db(query, fetch=True)
