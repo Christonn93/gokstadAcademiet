@@ -2,49 +2,43 @@ import os
 from mysql.connector import Error
 
 
-def create_db(files: list[str] = None, conn = None, cursor = None):
-    """Create and initialize database using provided SQL files"""
+def create_db(files: list[str], conn, cursor):
+    """Execute SQL files to create database + tables."""
 
-    # Check if files were provided
     if not files:
-        print("No SQL files provided.\n")
+        print("⚠️  No SQL files provided for database creation.")
         return
 
-    if conn is None or cursor is None:
-        print("Failed to establish database connection. Cannot create database.\n")
+    if not conn or not cursor:
+        print("❌ No active database connection — aborting.")
         return
 
-    # Loop through each SQL file
     try:
         for filename in files:
-            print(f"Opening {filename}")
+            print(f"\n📂 Opening file: {filename}")
 
-            # Validate file path
             if not os.path.exists(filename):
-                print(f"File not found: {filename}\n")
+                print(f"❌ File does not exist: {filename}")
                 continue
 
-            # Read SQL file content
-            with open(filename, "r", encoding='utf-8') as file:
+            with open(filename, "r", encoding="utf-8") as file:
                 sql_script = file.read()
 
-            # Split and execute SQL statements
-            for statement in sql_script.split(";"):
-                if statement.strip():
-                    cursor.execute(statement)
+            statements = [stmt.strip() for stmt in sql_script.split(";") if stmt.strip()]
 
-            print(f"Finished executing {filename}\n")
+            print(f"⚙️  Executing {len(statements)} SQL statements...")
+            for stmt in statements:
+                cursor.execute(stmt)
 
-        # Commit database changes
+            print(f"✅ Finished executing: {filename}")
+
         conn.commit()
-        print(f"Database created successfully!\n")
+        print("\n🎉 Database created and initialized successfully!\n")
 
-    # Handle MySQL errors
     except Error as e:
-        print(f"MySQL error: {e}\n")
-
+        print(f"❌ MySQL Error during create_db: {e}")
+        conn.rollback()
     finally:
-        # Close connection
         if cursor:
             cursor.close()
         if conn and conn.is_connected():

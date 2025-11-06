@@ -1,32 +1,43 @@
-from constants import sql_files
+from constants import get_sql_files
 from database import connect_db, create_db, create_db_tables, seed_db
 from utils.helpers import Validation
 
 
 def database_service():
-    # Get file paths for all SQL scripts needed for database setup
-    sql_paths = sql_files()
+    """Run full database setup: create DB, create tables, seed data."""
 
-    # Calling validation class
+    print("\n🚀 Starting database setup service...")
+
+    sql_paths = get_sql_files()
     validate = Validation()
 
-    # Establish connection to the database
+    # Establish initial database connection
     conn, cursor = connect_db()
+    if not validate.is_connected(conn, cursor):
+        print("❌ Database connection failed — stopping service.\n")
+        return
 
-    # Verify database connection is working before proceeding
-    if validate.is_connected(conn, cursor):
-        pass  # Connection is valid, continue with setup
+    print("✅ Database connection confirmed.\n")
 
-    # Create the database if it doesn't exist
-    if sql_paths["create_db"]:
+    # 1. Create the database
+    if sql_paths.get("create_db"):
+        print(f"📂 Creating database using: {sql_paths['create_db']}")
         create_db([sql_paths["create_db"]], conn, cursor)
+    else:
+        print("⚠️ No create_db file found — skipping database creation.")
 
-    # Create all necessary tables in the database
-    if sql_paths["create_tables"]:
+    # 2. Create tables
+    if sql_paths.get("create_tables"):
+        print(f"🛠 Creating tables from: {sql_paths['create_tables']}")
         create_db_tables([sql_paths["create_tables"]])
+    else:
+        print("⚠️ No create_tables file found — skipping table creation.")
 
-    # Populate tables with initial data (seed data)
-    if sql_paths["seed_db"]:
+    # 3. Insert seed data
+    if sql_paths.get("seed_db"):
+        print(f"🌱 Seeding database with: {sql_paths['seed_db']}")
         seed_db(sql_paths["seed_db"])
     else:
-        print("Cannot seed data - tables are missing")
+        print("⚠️ Cannot seed data — seed SQL file is missing.")
+
+    print("\n✅ Database service completed successfully.\n")

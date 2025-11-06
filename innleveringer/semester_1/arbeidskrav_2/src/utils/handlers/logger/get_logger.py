@@ -1,28 +1,47 @@
 import logging
+from logging.handlers import RotatingFileHandler
+import os
 
-def get_logger(name, level=logging.INFO):
-    logg = logging.getLogger(name)
-    logg.setLevel(level)
+def get_logger(
+    name: str,
+    level: int = logging.INFO,
+    log_file: str = "app.log",
+    max_bytes: int = 1_000_000,
+    backup_count: int = 3
+):
+    log_instance = logging.getLogger(name)
+    log_instance.setLevel(level)
 
-    if not logg.handlers:
+    # Prevent adding multiple handlers if function is called multiple times
+    if log_instance.handlers:
+        return log_instance
 
-        # Create handlers
-        c_handler = logging.StreamHandler()
-        f_handler = logging.FileHandler('error.log')
-        c_handler.setLevel(logging.WARNING)
-        f_handler.setLevel(logging.ERROR)
+    # ✅ Console handler (prints warnings and above to terminal)
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_format = logging.Formatter("📢 %(levelname)s - %(message)s")
+    console_handler.setFormatter(console_format)
 
-        # Create formatters and add it to handlers
-        c_format = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-        f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        c_handler.setFormatter(c_format)
-        f_handler.setFormatter(f_format)
+    # ✅ Rotating file handler (saves errors to a file, rotates logs)
+    os.makedirs("logs", exist_ok=True)
+    file_handler = RotatingFileHandler(
+        os.path.join("logs", log_file),
+        maxBytes=max_bytes,
+        backupCount=backup_count,
+        encoding="utf-8"
+    )
+    file_handler.setLevel(logging.ERROR)
+    file_format = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    file_handler.setFormatter(file_format)
 
-        # Add handlers to the logger
-        logg.addHandler(c_handler)
-        logg.addHandler(f_handler)
+    # ✅ Attach handlers
+    log_instance.addHandler(console_handler)
+    log_instance.addHandler(file_handler)
 
-    return logg
+    return log_instance
 
 
+# Create logger for this file/module
 logger = get_logger(__name__)

@@ -5,18 +5,18 @@ def format_table(data):
 
     # If no data, return a friendly message
     if not data:
-        return "No data found."
+        return "⚠️ No data found."
 
     # Extract headers dynamically from the first row
     headers = list(data[0].keys())
 
-    # Calculate column widths (header vs. cell values)
+    # Calculate column widths (max of header width or longest value width)
     col_widths = {header: len(header) for header in headers}
     for row in data:
         for header in headers:
             col_widths[header] = max(col_widths[header], len(str(row.get(header, ""))))
 
-    # Build formatted table
+    # Build table
     lines = []
 
     # Header row

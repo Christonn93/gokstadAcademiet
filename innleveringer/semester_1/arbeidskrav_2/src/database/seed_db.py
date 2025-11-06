@@ -8,63 +8,63 @@ from utils.helpers import Validation
 
 
 def seed_db(file_path: str = None):
-    """Main function to populate the database with data from a SQL seed file"""
+    """Main function to populate the database with data from a SQL seed file."""
 
-    print("Starting database seeding function...")
+    print("\n🌱 Starting database seeding process...")
 
-    # Calling validation
     validate = Validation()
 
-    # Validate input parameters
+    # Validate seed file path
     if not validate.is_valid_seed_file(file_path):
+        print("❌ Invalid or missing SQL seed file.")
         return
 
     # Establish database connection
     conn, cursor = connect_db()
-
     if not validate.is_connected(conn, cursor):
+        print("❌ Database connection failed — seeding aborted.")
         return
 
-    print("SUCCESS: Database connection established")
-    print(f"SQL file path: {file_path}")
-    print("\nStarting database seeding process...\n")
+    print("✅ Database connection established.")
+    print(f"📂 Seed file: {file_path}\n")
 
     try:
-        # Parse SQL file into executable statements
+        # Parse SQL statements from file
         statements = parse_sql_file(file_path)
 
         if not statements:
-            print("WARNING: No executable SQL statements found in file")
+            print("⚠️ No valid SQL statements found in the seed file.")
             return
 
-        # Execute all SQL statements
+        print(f"🛠 Executing {len(statements)} SQL statements...")
+
         successful_statements, failed_statements = seed_data(cursor, statements)
-
-        # Commit changes to database
         conn.commit()
-        print(f"\nDatabase seeding completed!")
-        print(f"Summary: {successful_statements} successful, {failed_statements} failed")
 
-        # Verify data was inserted (only if we had successful statements)
+        print("\n✅ Database seeding completed.")
+        print(f"📊 Summary: {successful_statements} succeeded, {failed_statements} failed")
+
+        # Optional data verification logic
         if successful_statements > 0:
-            print("Changes committed to database")
+            print("💾 Changes committed to the database.")
             validate.is_seed_valid(cursor)
         else:
-            print("WARNING: No successful statements executed")
+            print("⚠️ No statements were successfully executed.")
 
     except FileNotFoundError as e:
-        print(f"ERROR: {e}")
+        print(f"❌ File not found: {e}")
 
     except Error as e:
-        print(f"MySQL error during seeding: {e}")
+        print(f"❌ MySQL error during seeding: {e}")
         if conn:
             conn.rollback()
-            print("All changes rolled back due to error")
+            print("↩️ All changes rolled back due to MySQL error.")
+
     except Exception as e:
-        print(f"Unexpected error during seeding: {e}")
+        print(f"❌ Unexpected error during seeding: {e}")
         if conn:
             conn.rollback()
-            print("All changes rolled back due to unexpected error")
+            print("↩️ All changes rolled back due to unexpected error.")
+
     finally:
-        # Always clean up resources
         disconnect_db(cursor, conn)

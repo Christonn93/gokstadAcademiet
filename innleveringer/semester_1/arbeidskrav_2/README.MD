@@ -133,56 +133,47 @@ NOTE: Not fully operative!!!
 ## 📂 Folder Structure
 ```
 arbeidskrav_2/
-├── .docs/
-│   ├── AI-Help/                    ← Documentation of AI-assisted suggestions, notes, or experiments
-│   ├── images/                     ← Screenshots, diagrams, or visuals used in the documentation or README
-│   └── other/                      ← Any additional reference materials or supporting documents
-│
-├── docker/
-│   ├── Dockerfile                  ← Defines container environment for running the Python app
-│   └── compose.yml                 ← Docker Compose setup for orchestrating services (e.g., app + database)
-│
-├── init.d/
-│   └── 10-init.sql                 ← Initial SQL setup script for seeding or bootstrapping the database
-│
-├── sql/
-│   ├── create_database.sql         ← Defines schema, tables, and constraints for the main database
-│   ├── create_database_tables.sql  ← Defines schema, tables, and constraints for the main database
-│   ├── seed_database.sql           ← Defines schema, tables, and constraints for the main database
-│   └── queries.sql                 ← Reusable SQL queries for debugging or manual database operations
-│
-├── python/
-│   ├── app/
-│   │   ├── menu.py                 ← Command-line interface or text-based menu system for user navigation
-│   │   └── controller.py           ← Connects menu actions to the correct service logic (acts as router)
-│   │
-│   ├── db/
-│   │   ├── db_config.py            ← Configuration for database connections
-│   │   ├── db_connection.py        ← Handles database connections (create_connection, close_connection)
-│   │   └── schema.py               ← Python-side representation of database structure and models
-│   │
-│   ├── services/
-│   │   ├── book_service.py         ← Business logic for managing books (CRUD, availability checks)
-│   │   └── loan_service.py         ← Business logic for managing loans, due dates, and returns
-│   │
-│   ├── utils/
-│   │   ├── handlers/
-│   │   │   ├── db_handler.py       ← Wraps DB operations with retry logic and transaction management
-│   │   │   ├── input_handler.py    ← Validates and sanitizes user input before passing to services
-│   │   │   └── error_handler.py    ← Centralized logic for catching and formatting application errors
-    │   │
-│   │   └── helpers/
-│   │       ├── formatters.py       ← Handles output formatting (e.g., table prints, reports, messages)
-│   │       ├── validators.py       ← Input validation utilities for type checking and business rules
-│   │       └── converters.py       ← Data conversion helpers (string↔bool, int↔str, date parsing, etc.)
-│   │
-│   └── main.py                     ← Main entry point; initializes app, loads config, runs main loop
-│
-├── .env                            ← Environment variables for local development (e.g., DB_URL)
-├── .env.example                    ← Example template showing required .env keys and formats
-├── requirements.txt                ← Python dependencies required to run the application
-└── README.MD                       ← Project overview, setup guide, and usage instructions
-
+├── .docs/                      ← Contains project documentation, including AI-generated suggestions and images.
+├── docker/                     ← Contains Docker-related files for containerizing the application.
+│   ├── Dockerfile              ← Defines the Docker image for the Python application.
+│   └── compose.yml             ← Defines the Docker Compose services for the application and database.
+├── init.d/                     ← Contains initialization scripts for the database.
+│   └── 10-init.sql             ← SQL script for initial database setup.
+├── src/                        ← Contains the main source code for the Python application.
+│   ├── config/                 ← Contains configuration files for the application.
+│   │   └── database.py         ← Contains database configuration settings.
+│   ├── constants/              ← Contains constant values used throughout the application.
+│   │   ├── base.py             ← Contains base constants.
+│   │   └── sql_files.py        ← Contains paths to SQL files.
+│   ├── database/               ← Contains modules for interacting with the database.
+│   │   ├── sql/                ← Contains SQL scripts for database operations.
+│   │   │   ├── create_database.sql       ← SQL script for creating the database.
+│   │   │   ├── create_database_tables.sql← SQL script for creating database tables.
+│   │   │   ├── queries.sql               ← Contains various SQL queries.
+│   │   │   └── seed_database.sql         ← SQL script for seeding the database with initial data.
+│   │   ├── connect_db.py       ← Module for connecting to the database.
+│   │   ├── create_db.py        ← Module for creating the database.
+│   │   ├── create_db_tables.py ← Module for creating database tables.
+│   │   ├── disconnect_db.py    ← Module for disconnecting from the database.
+│   │   ├── drop_db.py          ← Module for dropping the database.
+│   │   ├── query_db.py         ← Module for querying the database.
+│   │   └── seed_db.py          ← Module for seeding the database.
+│   ├── interface/              ← Contains the user interface for the application.
+│   │   └── program.py          ← The main command-line interface for the application.
+│   ├── services/               ← Contains the business logic for the application.
+│   │   ├── book_service.py     ← Service for managing books.
+│   │   ├── borrower_service.py ← Service for managing borrowers.
+│   │   ├── database_service.py ← Service for managing the database.
+│   │   └── loan_service.py     ← Service for managing loans.
+│   └── utils/                  ← Contains utility functions and helper modules.
+│       ├── handlers/           ← Contains handlers for various tasks.
+│       ├── helpers/            ← Contains helper functions.
+│       └── __init__.py         ← Initializes the utils package.
+├── .env.example                ← Example environment file.
+├── .gitignore                  ← Specifies files and directories to be ignored by Git.
+├── main.py                     ← The main entry point for the application.
+├── README.MD                   ← This file.
+└── requirements.txt            ← Contains the Python dependencies for the project.
 ```
 ---
 

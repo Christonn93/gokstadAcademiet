@@ -1,75 +1,67 @@
 import os
 from mysql.connector import Error
-
 from database.connect_db import connect_db
 
 
 def create_db_tables(files: list[str] = None):
-    """Create database tables from provided SQL files"""
+    """Create database tables from provided SQL files."""
 
-    # Using database connection
+    # Open database connection
     conn, cursor = connect_db()
 
-    # Check if connection failed
+    # Connection check
     if conn is None or cursor is None:
-        print("No database connection\n")
+        print("❌ No database connection established.\n")
         return
 
-    # Check if files list is provided
+    # SQL file check
     if not files:
-        print("No SQL files provided to create tables.\n")
+        print("⚠️ No SQL files provided for creating tables.\n")
         cursor.close()
         conn.close()
         return
 
     try:
-        # Loop through each SQL file and execute its statements
         for file_path in files:
-            print(f"Creating table from: {file_path}")
+            print(f"\n📄 Processing SQL file: {file_path}")
 
-            # Validate file existence
             if not os.path.exists(file_path):
-                print(f"File not found: {file_path}\n")
+                print(f"❌ File not found: {file_path}")
                 continue
 
-            # Read and load the SQL script content
             with open(file_path, "r", encoding="utf-8") as f:
                 sql_script = f.read()
 
-            print(f"SQL content length: {len(sql_script)} characters")
+            print(f"📏 SQL file size: {len(sql_script)} characters")
 
-            # Split SQL script into executable statements
+            # Split into executable statements
             statements = [stmt.strip() for stmt in sql_script.split(";") if stmt.strip()]
-            print(f"Found {len(statements)} statements to execute")
+            print(f"🛠 Found {len(statements)} SQL statements to execute.")
 
+            # Execute each statement
             for i, statement in enumerate(statements, 1):
-                if statement.strip():
-                    print(f"Executing statement {i}: {statement[:100]}...")
-                    try:
-                        cursor.execute(statement)
-                        print(f"✓ Statement {i} executed successfully")
-                    except Error as e:
-                        print(f"✗ Error in statement {i}: {e}")
-                        # Don't continue if table creation fails
-                        raise
+                print(f"➡ Executing statement {i}...")
+                try:
+                    cursor.execute(statement)
+                    print(f"✅ Statement {i} executed successfully.")
+                except Error as e:
+                    print(f"❌ Error in statement {i}: {e}")
+                    raise  # stop processing further files on failure
 
-            print(f"Finished creating tables from {file_path}\n")
+            print(f"✅ Finished executing file: {file_path}")
 
-        # Commit changes
         conn.commit()
-        print("All tables created successfully!\n")
+        print("\n🎉 All tables created successfully!\n")
 
     except Error as e:
-        print(f"MySQL error: {e}\n")
+        print(f"❌ MySQL error while creating tables: {e}")
         if conn:
             conn.rollback()
 
     finally:
-        # Cleanup resources
-        if cursor is not None:
+        if cursor:
             cursor.close()
-            print("Cursor closed.\n")
-
-        if conn is not None and conn.is_connected():
+            print("🔒 Cursor closed.")
+        if conn and conn.is_connected():
             conn.close()
-            print("Connection closed.\n")
+            print("🔌 Connection closed.\n")
